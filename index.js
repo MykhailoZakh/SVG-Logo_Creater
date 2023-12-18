@@ -1,7 +1,7 @@
 // initializing packages needed for the application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Circle = require("./lib/shapes")
+const Shape = require("./lib/shapes")
 
 // function to initialize app
 const init = function(){
@@ -38,9 +38,11 @@ init();
 // function to create file with logo data
 
 function fileCreate(data) {
-    let circleObj = new Circle(data.text, data.textColor, data.shapeColor);
-    // let dataText = 
-    let shape = circleObj.shape;
-    console.log(circleObj);
-    // fs.writeFile("./examples/logo.svg", circleObj.render(shape), (err) => err ? console.error(err) : console.log("Generated logo.svg"));
+    let shapeObj;
+    if(data.shape == "circle") shapeObj = new Shape[0](data.text, data.textColor, data.shapeColor);
+    if(data.shape == "triangle") shapeObj = new Shape[1](data.text, data.textColor, data.shapeColor);
+    if(data.shape == "square") shapeObj = new Shape[2](data.text, data.textColor, data.shapeColor);
+    let shape = shapeObj.shape;
+    console.log(shapeObj);
+    fs.writeFile("./examples/logo.svg", shapeObj.render(shape), (err) => err ? console.error(err) : console.log("Generated logo.svg"));
 }
