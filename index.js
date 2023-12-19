@@ -43,6 +43,6 @@ function fileCreate(data) {
     if(data.shape == "triangle") shapeObj = new Shape[1](data.text, data.textColor, data.shapeColor);
     if(data.shape == "square") shapeObj = new Shape[2](data.text, data.textColor, data.shapeColor);
     let shape = shapeObj.shape;
-    console.log(shapeObj);
+    
     fs.writeFile("./examples/logo.svg", shapeObj.render(shape), (err) => err ? console.error(err) : console.log("Generated logo.svg"));
 }
